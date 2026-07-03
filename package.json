@@ -1,0 +1,50 @@
+{
+  "name": "@frontdrive/ui-llm-tools",
+  "version": "0.1.0",
+  "description": "Внутренний фреймворк AI-тулинга для frontend-команд: раскатывает skills/агентские инструкции в проекты через CLI-генератор.",
+  "type": "module",
+  "bin": {
+    "frontdrive-tools": "bin/frontdrive-tools.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "assets"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "skills",
+    "agents",
+    "frontend",
+    "cli",
+    "codegen"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "gray-matter": "^4.0.3",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
