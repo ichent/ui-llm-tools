@@ -1,0 +1,204 @@
+{
+  "components": {
+    "Локальные компоненты/AiAgentPopover": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Композиции/AnalyticalWidget": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/ApprovalCenter": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Autocomplete": {
+      "summary": "Поле ввода с подсказками из списка по мере набора.",
+      "whenToUse": "Выбор из большого набора значений с поиском.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/AutocompleteSearch": {
+      "summary": "Autocomplete в режиме поиска по данным.",
+      "whenToUse": "Поиск с подсказками по большому справочнику.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/BlockGradientScroll": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Композиции/BlockTitle": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Box": {
+      "summary": "Базовый контейнер-обёртка для лейаута и отступов.",
+      "whenToUse": "Нейтральный блок под вёрстку без своей семантики.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Collapse": {
+      "summary": "Сворачиваемая секция контента.",
+      "whenToUse": "Контент нужно скрывать/раскрывать по клику.",
+      "aliasesPixso": []
+    },
+    "Композиции/Container": {
+      "summary": "Композиционный контейнер страницы/блока.",
+      "whenToUse": "Группировка контента в лейауте.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/DrawerDF": {
+      "summary": "Боковая выезжающая панель поверх контента.",
+      "whenToUse": "Второстепенные действия/детали сбоку, не блокируя поток.",
+      "aliasesPixso": []
+    },
+    "Композиции/EmptyState": {
+      "summary": "Заглушка «нет данных».",
+      "whenToUse": "Список/таблица пусты — объяснить и предложить действие.",
+      "aliasesPixso": []
+    },
+    "Композиции/FiltersActions": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/GridDND": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Композиции/Layout": {
+      "summary": "Каркас страницы (сетка/области).",
+      "whenToUse": "Общая структура экрана.",
+      "aliasesPixso": []
+    },
+    "Композиции/LeftPanel": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/MassActions": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/ModalDF": {
+      "summary": "Модальное окно поверх контента, требует явного закрытия.",
+      "whenToUse": "Блокирующие сценарии: подтверждение, форма поверх контента.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/ModalDFConfirmation": {
+      "summary": "Модалка подтверждения действия (да/нет).",
+      "whenToUse": "Подтверждение необратимого или важного действия.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Notification": {
+      "summary": "Уведомление о событии/статусе.",
+      "whenToUse": "Неблокирующее сообщение пользователю.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/NumberFormatAmount": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Композиции/PageLayout": {
+      "summary": "Каркас страницы с типовыми зонами.",
+      "whenToUse": "Стандартный лейаут страницы приложения.",
+      "aliasesPixso": []
+    },
+    "Композиции/PageTitle": {
+      "summary": "Заголовок страницы.",
+      "whenToUse": "Шапка с названием текущего раздела.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/PopoverDF": {
+      "summary": "Всплывающий блок, привязанный к элементу-триггеру.",
+      "whenToUse": "Контекстные действия/инфо рядом с элементом.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/PopupDF": {
+      "summary": "Всплывающее окно поверх контента.",
+      "whenToUse": "Небольшой контент поверх страницы без полной блокировки.",
+      "aliasesPixso": []
+    },
+    "Композиции/SplitView": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Stories": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Switch": {
+      "summary": "Переключатель вкл/выкл (тумблер).",
+      "whenToUse": "Булевы настройки с мгновенным применением.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Table": {
+      "summary": "Таблица данных с набором фич (сортировка, фильтры, группировка).",
+      "whenToUse": "Отображение и работа с табличными данными.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TableCanvas": {
+      "summary": "Высокопроизводительная таблица на canvas.",
+      "whenToUse": "Большие объёмы данных: виртуализация и скорость.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TableContract": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TableTabs": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TextArea": {
+      "summary": "Многострочное поле ввода текста.",
+      "whenToUse": "Длинный текст: комментарии, описания.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TextField": {
+      "summary": "Однострочное поле ввода текста.",
+      "whenToUse": "Короткие значения: имя, email и т.п.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TextFieldSearch": {
+      "summary": "Поле ввода в режиме поиска.",
+      "whenToUse": "Строка поиска по списку/таблице.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TooltipList": {
+      "summary": "Тултип со списком элементов.",
+      "whenToUse": "В подсказке нужно показать перечень.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TourWidget": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/Typography": {
+      "summary": "Типографика: заголовки, текст, стили шрифта.",
+      "whenToUse": "Единый способ выводить текст по дизайн-системе.",
+      "aliasesPixso": []
+    },
+    "Локальные компоненты/TypographyWithAutoTooltip": {
+      "summary": "",
+      "whenToUse": "",
+      "aliasesPixso": []
+    },
+    "Композиции/Widget": {
+      "summary": "Виджет — самостоятельный блок на дашборде.",
+      "whenToUse": "Переиспользуемый блок с данными/действиями.",
+      "aliasesPixso": []
+    }
+  }
+}
