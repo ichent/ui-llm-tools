@@ -65,6 +65,50 @@ description: Короткое описание для списков и AGENTS.m
 3. Подними версию пакета (semver), опубликуй. Реестр скиллов строится
    автоматически из фронт-маттера — регистрировать вручную ничего не нужно.
 
+## MCP-сервер: заземление LLM на UI-KIT
+
+Пакет содержит MCP-сервер `frontdrive-mcp`, который отдаёт LLM (в Cursor)
+**карточки компонентов** из `glossary.json` и **реальный код примеров** из
+Storybook. Это убирает галлюцинации по API: модель генерит компоненты, опираясь
+на фактические stories, а не на догадки.
+
+### Тулы
+
+| Тул                 | Назначение                                                                 |
+| ------------------- | -------------------------------------------------------------------------- |
+| `search_components` | Поиск по имени/алиасу Pixso/описанию/фиче (вход в ACL: «Popup» → `ModalDF`) |
+| `get_component`     | Карточка: описание, когда использовать, алиасы, примеры, фичи агрегата      |
+| `get_examples`      | Реальный код stories компонента из репозитория UI-KIT (grounding)          |
+| `list_components`   | Обзор дизайн-системы, опц. фильтр по категории                             |
+
+### Конфигурация (env)
+
+| Переменная                   | По умолчанию                        | Назначение                              |
+| ---------------------------- | ----------------------------------- | --------------------------------------- |
+| `FRONTDRIVE_GLOSSARY_DIR`    | `<пакет>/glossary-tools`            | Папка с `glossary.json` и `overlay.json` |
+| `FRONTDRIVE_GLOSSARY`        | `<DIR>/glossary.json`               | Путь к глоссарию напрямую                |
+| `FRONTDRIVE_OVERLAY`         | `<DIR>/overlay.json`                | Путь к overlay напрямую                 |
+| `FRONTDRIVE_STORYBOOK_ROOT`  | —                                   | Корень репозитория UI-KIT (для `get_examples`) |
+
+### Подключение в Cursor
+
+Пропиши в `.cursor/mcp.json` проекта (или в `~/.cursor/mcp.json` глобально):
+
+```json
+{
+  "mcpServers": {
+    "frontdrive-glossary": {
+      "command": "node",
+      "args": ["<путь>/ui-llm-tools/bin/frontdrive-mcp.js"],
+      "env": { "FRONTDRIVE_STORYBOOK_ROOT": "<путь к репозиторию UI-KIT>" }
+    }
+  }
+}
+```
+
+Без `FRONTDRIVE_STORYBOOK_ROOT` сервер работает, но `get_examples` отдаёт только
+имена stories и пути (без кода).
+
 ## Разработка
 
 ```bash

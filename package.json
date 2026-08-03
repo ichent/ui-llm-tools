@@ -4,7 +4,8 @@
   "description": "Внутренний фреймворк AI-тулинга для frontend-команд: раскатывает skills/агентские инструкции в проекты через CLI-генератор.",
   "type": "module",
   "bin": {
-    "frontdrive-tools": "bin/frontdrive-tools.js"
+    "frontdrive-tools": "bin/frontdrive-tools.js",
+    "frontdrive-mcp": "bin/frontdrive-mcp.js"
   },
   "exports": {
     ".": "./dist/index.js"
@@ -12,7 +13,9 @@
   "files": [
     "bin",
     "dist",
-    "assets"
+    "assets",
+    "glossary-tools/glossary.json",
+    "glossary-tools/overlay.json"
   ],
   "engines": {
     "node": ">=18"
@@ -39,9 +42,11 @@
     "access": "restricted"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "commander": "^12.1.0",
     "gray-matter": "^4.0.3",
-    "picocolors": "^1.1.1"
+    "picocolors": "^1.1.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

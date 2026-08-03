@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "frontdrive-glossary": {
+      "command": "node",
+      "args": ["/Users/ivank/me/dev/ai-projects/ui-llm-tools/bin/frontdrive-mcp.js"],
+      "env": {
+        "FRONTDRIVE_STORYBOOK_ROOT": "/ABSOLUTE/PATH/TO/UI-KIT-REPO"
+      }
+    }
+  }
+}
