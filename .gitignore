@@ -4,3 +4,6 @@ dist/
 .DS_Store
 .idea/
 .vscode/
+
+# генерится в рабочем проекте из реальных примеров (env-специфично)
+markup-generator/component-props.json

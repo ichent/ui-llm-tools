@@ -8,7 +8,7 @@
 // точные имена пропсов сверяются с примерами сторибука через MCP get_examples
 // (это следующий слой). Пакеты-импорты — плейсхолдеры, поправишь под свой UI-KIT.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const inPath = process.argv[2] ?? 'pixso-spec.json';
 const outPath = process.argv[3] ?? 'GeneratedModal.tsx';
@@ -16,23 +16,38 @@ const outPath = process.argv[3] ?? 'GeneratedModal.tsx';
 const DF_PKG = '@ui-kit/df';
 const PLASMA_PKG = '@ui-kit/plasma';
 
-// slot -> prop. "Text" уходит в children, остальные — в атрибуты.
-const SLOT_TO_PROP = { Title: 'label', value: 'value', Placeholder: 'placeholder', Quantity: 'count' };
-const CHILDREN_SLOT = new Set(['Text']);
+const CHILDREN = '$children'; // sentinel в prop-map: слот рендерится как текст-ребёнок
+
+// slot -> prop, из prop-map.json (глобальный _default + пер-компонентные оверрайды)
+const loadJson = (p, fallback) => (existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : fallback);
+const PROP_MAP = loadJson('prop-map.json', {
+  _default: { Title: 'label', value: 'value', Placeholder: 'placeholder', Text: CHILDREN, Quantity: 'count' },
+});
+// валидный набор пропсов из реальных примеров (component-props.json), для проверки
+const COMPONENT_PROPS = loadJson('component-props.json', {});
+
+const mappingFor = (name) => ({ ...(PROP_MAP._default ?? {}), ...(PROP_MAP[name] ?? {}) });
 
 const used = new Map(); // name -> kit ('df' | 'plasma' | 'local')
 const use = (name, kit) => used.set(name, kit);
+const warnings = [];
 
 const esc = (s) => String(s).replace(/"/g, '&quot;');
 const indent = (str, pad = '  ') => str.split('\n').map((l) => (l ? pad + l : l)).join('\n');
 
-function propsFromSlots(slots) {
+function propsFromSlots(slots, name) {
+  const map = mappingFor(name);
+  const valid = COMPONENT_PROPS[name]?.props; // undefined => валидацию пропускаем
   const props = [];
   let childText = null;
   for (const s of slots ?? []) {
-    if (CHILDREN_SLOT.has(s.slot)) { childText = s.text; continue; }
-    const p = SLOT_TO_PROP[s.slot];
-    if (p) props.push(`${p}="${esc(s.text)}"`);
+    const p = map[s.slot];
+    if (p == null) continue; // нет маппинга или явный null — выкидываем
+    if (p === CHILDREN) { childText = s.text; continue; }
+    if (valid && !valid.includes(p)) {
+      warnings.push(`${name}: проп "${p}" (слот "${s.slot}") не найден в примерах. Есть: ${valid.join(', ') || '—'}`);
+    }
+    props.push(`${p}="${esc(s.text)}"`);
   }
   return { props, childText };
 }
@@ -62,7 +77,7 @@ function partition(children) {
 function renderContainer(node) {
   use(node.name, node.kit);
   const { header, footer, body } = partition(node.children);
-  const attrs = [...propsFromSlots(node.slots).props];
+  const attrs = [...propsFromSlots(node.slots, node.name).props];
   if (header.length) attrs.push(`header={(\n${indent(indent(frag(renderList(header))))}\n  )}`);
   if (footer.length) attrs.push(`footer={(\n${indent(indent(frag(renderList(footer))))}\n  )}`);
 
@@ -99,7 +114,7 @@ function render(node) {
 
     case 'fake': {
       use('Fake', 'local');
-      const { props, childText } = propsFromSlots(node.slots);
+      const { props, childText } = propsFromSlots(node.slots, node.name);
       const attrs = props.length ? ' ' + props.join(' ') : '';
       return `{/* ⚠ не найдено в UI-KIT (DF/Plasma): "${node.name}" */}\n<Fake name="${esc(node.name)}"${attrs}>${childText ? esc(childText) : ''}</Fake>`;
     }
@@ -107,7 +122,7 @@ function render(node) {
     case 'component': {
       use(node.name, node.kit);
       if (node.children) return renderContainer(node);
-      const { props, childText } = propsFromSlots(node.slots);
+      const { props, childText } = propsFromSlots(node.slots, node.name);
       const attrs = props.length ? ' ' + props.join(' ') : '';
       if (childText != null) return `<${node.name}${attrs}>${esc(childText)}</${node.name}>`;
       return `<${node.name}${attrs} />`;
@@ -158,3 +173,12 @@ console.log(`Готово: ${outPath}`);
 console.log(`  Импорт из DF (${DF_PKG}): ${dfNames.join(', ') || '—'}`);
 console.log(`  Импорт из Plasma (${PLASMA_PKG}): ${plasmaNames.join(', ') || '—'}`);
 console.log(`  Локальные заглушки: ${localNames.join(', ') || '—'}`);
+
+if (Object.keys(COMPONENT_PROPS).length === 0) {
+  console.log(`  ⓘ component-props.json нет — валидация пропсов пропущена (запусти props-from-examples.mjs)`);
+} else if (warnings.length) {
+  console.log(`\n  ⚠ Предупреждения по пропсам (${[...new Set(warnings)].length}):`);
+  for (const w of [...new Set(warnings)]) console.log(`    - ${w}`);
+} else {
+  console.log(`  ✔ Все пропсы совпали с примерами`);
+}
