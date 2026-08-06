@@ -11,7 +11,10 @@
 // Результат -> component-props.json: { Name: { kit, file, props: [...] } }
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const HERE = dirname(fileURLToPath(import.meta.url));
 
 // ROOT можно передать переменной окружения или первым аргументом.
 const ROOT = process.env.FRONTDRIVE_STORYBOOK_ROOT ?? process.argv[2];
@@ -24,18 +27,38 @@ if (!existsSync(ROOT)) {
   process.exit(1);
 }
 
+// Индексы сторибука могут лежать где угодно. Ищем по порядку:
+// явный env-оверрайд -> FRONTDRIVE_KITS_DIR -> cwd -> директория скрипта.
+const KITS_DIR = process.env.FRONTDRIVE_KITS_DIR ?? null;
+function findKit(fileName, envVar) {
+  const candidates = [
+    process.env[envVar],
+    KITS_DIR && join(KITS_DIR, fileName),
+    join(process.cwd(), fileName),
+    join(HERE, fileName),
+  ].filter(Boolean);
+  return candidates.find((c) => existsSync(c)) ?? null;
+}
+
 const KITS = [
-  { file: 'storybook-df.json', kit: 'df' },
-  { file: 'strybook-plasma.json', kit: 'plasma' },
+  { path: findKit('storybook-df.json', 'FRONTDRIVE_STORYBOOK_DF'), kit: 'df' },
+  { path: findKit('strybook-plasma.json', 'FRONTDRIVE_STORYBOOK_PLASMA'), kit: 'plasma' },
 ];
+if (!KITS.some((k) => k.path)) {
+  console.error(
+    `✖ Не найдены индексы сторибука (storybook-df.json / strybook-plasma.json).\n` +
+      `  Укажи FRONTDRIVE_KITS_DIR=/dir или FRONTDRIVE_STORYBOOK_DF=/path/to/storybook-df.json`,
+  );
+  process.exit(1);
+}
 
 const isSource = (p) => /\.(stories\.(tsx?|jsx?)|mdx|tsx?|jsx?)$/.test(p ?? '');
 
 // name(lowercase) -> { name, kit, sources:Set<string> } — собираем ВСЕ entry компонента
 const catalog = new Map();
-for (const { file, kit } of KITS) {
-  if (!existsSync(file)) continue;
-  const entries = JSON.parse(readFileSync(file, 'utf8')).entries ?? {};
+for (const { path, kit } of KITS) {
+  if (!path) { console.warn(`  ⚠ индекс для kit=${kit} не найден — пропускаю`); continue; }
+  const entries = JSON.parse(readFileSync(path, 'utf8')).entries ?? {};
   for (const e of Object.values(entries)) {
     const name = (e.title ?? '').split('/').pop()?.trim();
     if (!name) continue;
@@ -133,6 +156,7 @@ for (const [, info] of catalog) {
 writeFileSync('component-props.json', JSON.stringify(out, null, 2) + '\n');
 console.log(`Готово: component-props.json`);
 console.log(`  ROOT: ${ROOT}`);
+console.log(`  Индексы: ${KITS.map((k) => `${k.kit}=${k.path ?? '—'}`).join(', ')}`);
 console.log(`  Компонентов в каталоге: ${catalog.size}`);
 console.log(`  Прочитано файлов примеров: ${resolvedFiles}`);
 console.log(`  С извлечёнными пропсами: ${ok}`);
