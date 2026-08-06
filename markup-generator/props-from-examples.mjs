@@ -2,8 +2,9 @@
 // Детерминированно вытаскивает валидный набор пропсов каждого компонента из
 // реальных примеров сторибука (без LLM).
 //
-// Запуск:
+// Запуск (ROOT — любая директория-предок над story-файлами):
 //   FRONTDRIVE_STORYBOOK_ROOT=/path/to/ui-kit node props-from-examples.mjs
+//   node props-from-examples.mjs /path/to/ui-kit
 //
 // Читает .stories.tsx (пути берёт из storybook-df.json / strybook-plasma.json),
 // извлекает имена пропсов из JSX-использований компонента и из args/argTypes.
@@ -12,9 +13,14 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
-const ROOT = process.env.FRONTDRIVE_STORYBOOK_ROOT;
+// ROOT можно передать переменной окружения или первым аргументом.
+const ROOT = process.env.FRONTDRIVE_STORYBOOK_ROOT ?? process.argv[2];
 if (!ROOT) {
-  console.error('✖ Задай FRONTDRIVE_STORYBOOK_ROOT=/path/to/ui-kit');
+  console.error('✖ Задай FRONTDRIVE_STORYBOOK_ROOT=/path или: node props-from-examples.mjs /path');
+  process.exit(1);
+}
+if (!existsSync(ROOT)) {
+  console.error(`✖ Директория не существует: ${ROOT}`);
   process.exit(1);
 }
 
@@ -23,7 +29,9 @@ const KITS = [
   { file: 'strybook-plasma.json', kit: 'plasma' },
 ];
 
-// name(lowercase) -> { name, kit, tsx, mdx }
+const isSource = (p) => /\.(stories\.(tsx?|jsx?)|mdx|tsx?|jsx?)$/.test(p ?? '');
+
+// name(lowercase) -> { name, kit, sources:Set<string> } — собираем ВСЕ entry компонента
 const catalog = new Map();
 for (const { file, kit } of KITS) {
   if (!existsSync(file)) continue;
@@ -32,14 +40,44 @@ for (const { file, kit } of KITS) {
     const name = (e.title ?? '').split('/').pop()?.trim();
     if (!name) continue;
     const key = name.toLowerCase();
-    if (catalog.has(key)) continue; // df приоритетнее (идёт первым)
-    const tsx = (e.storiesImports ?? []).find((p) => p.endsWith('.stories.tsx'));
-    const mdx = e.importPath?.endsWith('.mdx') ? e.importPath : undefined;
-    catalog.set(key, { name, kit, tsx, mdx });
+    let rec = catalog.get(key);
+    if (!rec) { rec = { name, kit, sources: new Set() }; catalog.set(key, rec); }
+    if (rec.kit !== kit) continue; // df приоритетнее — plasma не подмешиваем
+    if (isSource(e.importPath)) rec.sources.add(e.importPath);
+    for (const p of e.storiesImports ?? []) if (isSource(p)) rec.sources.add(p);
   }
 }
 
-const rel = (p) => join(ROOT, p.replace(/^\.\//, ''));
+// Резолв устойчив к уровню ROOT: пробуем все «хвосты» относительного пути,
+// отбрасывая ведущие сегменты (packages/, packages/storybook/, ...).
+let firstTried = null;
+function resolveSource(relSource) {
+  const parts = relSource.replace(/^\.\//, '').split('/').filter(Boolean);
+  for (let i = 0; i < parts.length; i++) {
+    const cand = join(ROOT, parts.slice(i).join('/'));
+    if (firstTried === null) firstTried = cand;
+    if (existsSync(cand)) return cand;
+  }
+  return null;
+}
+
+// ключи верхнего уровня объектного литерала (без вложенных)
+function topLevelKeys(body) {
+  const keys = [];
+  let depth = 0, i = 0;
+  const atTop = () => depth === 0;
+  while (i < body.length) {
+    const ch = body[i];
+    if (ch === '{' || ch === '[' || ch === '(') { depth++; i++; continue; }
+    if (ch === '}' || ch === ']' || ch === ')') { depth--; i++; continue; }
+    if (atTop() && /[A-Za-z_]/.test(ch)) {
+      const m = /^([A-Za-z_][\w]*)\s*:/.exec(body.slice(i));
+      if (m) { keys.push(m[1]); i += m[0].length; continue; }
+    }
+    i++;
+  }
+  return keys;
+}
 
 function extractProps(src, name) {
   const props = new Set();
@@ -48,10 +86,15 @@ function extractProps(src, name) {
   const tagRe = new RegExp(`<${name}\\b([\\s\\S]*?)(?:/>|>)`, 'g');
   let m;
   while ((m = tagRe.exec(src))) {
-    for (const pm of m[1].matchAll(/(?:^|\s)([A-Za-z_][\w]*)\s*=/g)) props.add(pm[1]);
+    const attr = m[1];
+    // проп со значением: name=...
+    for (const pm of attr.matchAll(/([A-Za-z_][\w]*)\s*=/g)) props.add(pm[1]);
+    // булев-проп (shorthand без =): убираем присваивания и берём оставшиеся идентификаторы
+    const bare = attr.replace(/([A-Za-z_][\w]*)\s*=\s*(?:"[^"]*"|'[^']*'|\{[^{}]*\})/g, ' ');
+    for (const bm of bare.matchAll(/(?:^|\s)([A-Za-z_][\w]*)(?=\s|$)/g)) props.add(bm[1]);
   }
 
-  // 2) args: { prop: ... } и argTypes: { prop: {...} }
+  // 2) args: { prop: ... } и argTypes: { prop: {...} } — только ключи верхнего уровня
   for (const block of ['args', 'argTypes']) {
     const re = new RegExp(`${block}\\s*:\\s*\\{`, 'g');
     let bm;
@@ -63,28 +106,38 @@ function extractProps(src, name) {
         if (src[i] === '{') depth++;
         else if (src[i] === '}') { depth--; if (depth === 0) break; }
       }
-      const body = src.slice(start, i);
-      for (const km of body.matchAll(/(?:^|[,{]\s*)([A-Za-z_][\w]*)\s*:/g)) props.add(km[1]);
+      for (const k of topLevelKeys(src.slice(start, i))) props.add(k);
     }
   }
   return [...props].sort();
 }
 
 const out = {};
-let ok = 0, miss = 0, nofile = 0;
+let ok = 0, miss = 0, nofile = 0, resolvedFiles = 0;
 for (const [, info] of catalog) {
-  const path = info.tsx ?? info.mdx;
-  if (!path) { miss++; continue; }
-  const abs = rel(path);
-  if (!existsSync(abs)) { nofile++; continue; }
-  const src = readFileSync(abs, 'utf8');
-  const props = extractProps(src, info.name);
-  out[info.name] = { kit: info.kit, file: path, props };
-  ok += props.length ? 1 : 0;
+  if (info.sources.size === 0) { miss++; continue; }
+  const props = new Set();
+  const files = [];
+  for (const src of info.sources) {
+    const abs = resolveSource(src);
+    if (!abs) continue;
+    resolvedFiles++;
+    files.push(src);
+    for (const p of extractProps(readFileSync(abs, 'utf8'), info.name)) props.add(p);
+  }
+  if (files.length === 0) { nofile++; continue; }
+  out[info.name] = { kit: info.kit, files, props: [...props].sort() };
+  if (props.size) ok++;
 }
 
 writeFileSync('component-props.json', JSON.stringify(out, null, 2) + '\n');
 console.log(`Готово: component-props.json`);
+console.log(`  ROOT: ${ROOT}`);
 console.log(`  Компонентов в каталоге: ${catalog.size}`);
+console.log(`  Прочитано файлов примеров: ${resolvedFiles}`);
 console.log(`  С извлечёнными пропсами: ${ok}`);
-console.log(`  Без файла примера: ${miss}, файл не найден в ROOT: ${nofile}`);
+console.log(`  Без source-путей в индексе: ${miss}, файл не найден под ROOT: ${nofile}`);
+if (resolvedFiles === 0) {
+  console.log(`\n  ⚠ Ни один файл не найден. Пример пробуемого пути:\n    ${firstTried}`);
+  console.log(`  Убедись, что ROOT указывает на директорию, ВНУТРИ которой лежат story-файлы.`);
+}
