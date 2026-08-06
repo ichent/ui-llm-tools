@@ -1,0 +1,1624 @@
+{
+  "nodes": [
+    {
+      "role": "component",
+      "type": "INSTANCE",
+      "name": "🔷 ModalDF",
+      "component": "ModalDF",
+      "direction": "HORIZONTAL",
+      "children": [
+        {
+          "role": "region",
+          "type": "INSTANCE",
+          "name": "👉 Modal content",
+          "region": "Modal content",
+          "direction": "VERTICAL",
+          "padding": "16px 0px 16px 0px",
+          "children": [
+            {
+              "role": "region",
+              "type": "INSTANCE",
+              "name": "👉 Modal header",
+              "region": "Modal header",
+              "direction": "HORIZONTAL",
+              "gap": 24,
+              "padding": "0px 16px 16px 16px",
+              "children": [
+                {
+                  "role": "region",
+                  "type": "INSTANCE",
+                  "name": "👉 Modal header",
+                  "region": "Modal header",
+                  "direction": "HORIZONTAL",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "role": "element",
+                      "type": "INSTANCE",
+                      "name": "ButtonBack",
+                      "component": "ButtonBack",
+                      "direction": "HORIZONTAL",
+                      "children": [
+                        {
+                          "role": "element",
+                          "type": "INSTANCE",
+                          "name": "Button",
+                          "component": "Button",
+                          "direction": "HORIZONTAL",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "role": "layout",
+                              "type": "FRAME",
+                              "name": "Button",
+                              "direction": "HORIZONTAL",
+                              "gap": 2,
+                              "padding": "8px 8px 8px 8px",
+                              "children": [
+                                {
+                                  "role": "layout",
+                                  "type": "FRAME",
+                                  "name": "Content",
+                                  "direction": "HORIZONTAL",
+                                  "gap": 4,
+                                  "children": [
+                                    {
+                                      "role": "icon",
+                                      "type": "INSTANCE",
+                                      "name": "16 / Arrows / ChevronLeft",
+                                      "icon": "ChevronLeft"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "Text block",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "role": "layout",
+                          "type": "FRAME",
+                          "name": "Title",
+                          "direction": "HORIZONTAL",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "role": "text",
+                              "type": "TEXT",
+                              "name": "Title.text",
+                              "text": "Создание комплекта документов № 24233423"
+                            },
+                            {
+                              "role": "layout",
+                              "type": "FRAME",
+                              "name": "badges",
+                              "direction": "HORIZONTAL",
+                              "gap": 10,
+                              "padding": "4px 0px 0px 0px",
+                              "children": [
+                                {
+                                  "role": "element",
+                                  "type": "INSTANCE",
+                                  "name": "modal.badge",
+                                  "component": "modal.badge",
+                                  "direction": "HORIZONTAL",
+                                  "gap": 10,
+                                  "children": [
+                                    {
+                                      "role": "layout",
+                                      "type": "FRAME",
+                                      "name": "BasicBadge",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 10,
+                                      "children": [
+                                        {
+                                          "role": "layout",
+                                          "type": "FRAME",
+                                          "name": "Badge",
+                                          "direction": "HORIZONTAL",
+                                          "gap": 3,
+                                          "padding": "4px 9px 4px 9px",
+                                          "children": [
+                                            {
+                                              "role": "text",
+                                              "type": "TEXT",
+                                              "name": "Бейдж",
+                                              "text": "Бейдж"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "role": "text",
+                          "type": "TEXT",
+                          "name": "subTitle.text",
+                          "text": "Платёжные данные "
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "role": "region",
+                  "type": "INSTANCE",
+                  "name": "↳ Header actions",
+                  "region": "Header actions",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "btn group main",
+                      "direction": "HORIZONTAL",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "🌕 IconButton 32 XS",
+                          "component": "IconButton",
+                          "size": "32 XS",
+                          "direction": "HORIZONTAL"
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "🌕 IconButton 32 XS",
+                          "component": "IconButton",
+                          "size": "32 XS",
+                          "direction": "HORIZONTAL"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "role": "layout",
+              "type": "FRAME",
+              "name": "Instance",
+              "direction": "HORIZONTAL",
+              "padding": "0px 16px 0px 16px",
+              "children": [
+                {
+                  "role": "element",
+                  "type": "INSTANCE",
+                  "name": "Custom block",
+                  "component": "Custom block",
+                  "direction": "VERTICAL",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "row",
+                      "direction": "VERTICAL",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 Combobox Single 40 S",
+                          "component": "Combobox Single",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 4,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Этап оплаты"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "Постоплата"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "component",
+                      "type": "INSTANCE",
+                      "name": "💎 Divider",
+                      "component": "Divider"
+                    },
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "row",
+                      "direction": "HORIZONTAL",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": " 💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Получатель платежа (наименование для платёжного поручения)"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "ОАО Раменский приборостроительный завод"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "row",
+                      "direction": "HORIZONTAL",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 Combobox Single 40 S",
+                          "component": "Combobox Single",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Расчётный счёт"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "Выберите значение"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": " 💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Банк"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "ПАО Сбербанк"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": " 💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "БИК"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "044525225"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "row",
+                      "direction": "HORIZONTAL",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": " 💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Корр.счёт"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "3010181020000000025"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": " 💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Код УИН / УИП"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "Placeholder",
+                              "text": "Введите значение"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 Combobox Single 40 S",
+                          "component": "Combobox Single",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "Placeholder",
+                              "text": "Placeholder"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "component",
+                      "type": "INSTANCE",
+                      "name": "💎 Divider",
+                      "component": "Divider"
+                    },
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "row",
+                      "direction": "HORIZONTAL",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 Combobox Single 40 S",
+                          "component": "Combobox Single",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "КБК"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "Выберите значение"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 Combobox Single 40 S",
+                          "component": "Combobox Single",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "ОКТМО"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "Выберите значение"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 Combobox Single 40 S",
+                          "component": "Combobox Single",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "Placeholder",
+                              "text": "Placeholder"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "component",
+                      "type": "INSTANCE",
+                      "name": "💎 Divider",
+                      "component": "Divider"
+                    },
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "row",
+                      "direction": "HORIZONTAL",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Сумма к оплате с НДС"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "402 800,00"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Сумма НДС"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "71 475,41"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        },
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 TextField 40 S",
+                          "component": "TextField",
+                          "size": "40 S",
+                          "direction": "VERTICAL",
+                          "gap": 8,
+                          "slots": [
+                            {
+                              "slot": "Title",
+                              "text": "Валюта платежа"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "RUB"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "row",
+                      "direction": "HORIZONTAL",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "role": "component",
+                          "type": "INSTANCE",
+                          "name": "💎 DatePicker  S",
+                          "component": "DatePicker",
+                          "size": "S",
+                          "direction": "VERTICAL",
+                          "slots": [
+                            {
+                              "slot": "Label 1",
+                              "text": "Сентябрь"
+                            },
+                            {
+                              "slot": "Label 2",
+                              "text": "2022"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "Пн"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "Вт"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "Ср"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "Чт"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "Пт"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "Сб"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "Вс"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "26"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "27"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "28"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "29"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "30"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "31"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "1"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "2"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "3"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "7"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "8"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "9"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "10"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "11"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "12"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "13"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "14"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "15"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "16"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "17"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "18"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "19"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "20"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "21"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "22"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "23"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "24"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "25"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "26"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "27"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "28"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "29"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "30"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "1"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "2"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "3"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "4"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "5"
+                            },
+                            {
+                              "slot": "Label",
+                              "text": "6"
+                            },
+                            {
+                              "slot": "Title",
+                              "text": "Title"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "Text",
+                              "text": "Placeholder"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            },
+                            {
+                              "slot": "Title",
+                              "text": "Планируемая дата платежа"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "Tooltip Text you can replace"
+                            },
+                            {
+                              "slot": "TitleCaption",
+                              "text": "Title Caption"
+                            },
+                            {
+                              "slot": "TB",
+                              "text": "TB"
+                            },
+                            {
+                              "slot": "value",
+                              "text": "20.02.2026"
+                            },
+                            {
+                              "slot": "TA",
+                              "text": "TA"
+                            },
+                            {
+                              "slot": "text",
+                              "text": "(no required)"
+                            },
+                            {
+                              "slot": "caption",
+                              "text": "Caption"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "role": "element",
+                  "type": "INSTANCE",
+                  "name": "scrollbar",
+                  "component": "scrollbar",
+                  "direction": "HORIZONTAL",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "Change Padding Here",
+                      "direction": "VERTICAL",
+                      "padding": "0px 2px 0px 2px"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "role": "region",
+              "type": "INSTANCE",
+              "name": "👉 Modal footer",
+              "region": "Modal footer",
+              "direction": "HORIZONTAL",
+              "gap": 24,
+              "padding": "16px 16px 0px 16px",
+              "children": [
+                {
+                  "role": "region",
+                  "type": "INSTANCE",
+                  "name": "↳ Left footer actions",
+                  "region": "Left footer actions",
+                  "direction": "HORIZONTAL",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "role": "layout",
+                      "type": "FRAME",
+                      "name": "L-actions",
+                      "direction": "HORIZONTAL",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "role": "element",
+                          "type": "INSTANCE",
+                          "name": "L-secondary-1",
+                          "component": "L-secondary-1",
+                          "direction": "HORIZONTAL",
+                          "children": [
+                            {
+                              "role": "element",
+                              "type": "INSTANCE",
+                              "name": "Button",
+                              "component": "Button",
+                              "direction": "HORIZONTAL",
+                              "children": [
+                                {
+                                  "role": "layout",
+                                  "type": "FRAME",
+                                  "name": "Button",
+                                  "direction": "HORIZONTAL",
+                                  "padding": "10px 16px 10px 16px",
+                                  "children": [
+                                    {
+                                      "role": "layout",
+                                      "type": "FRAME",
+                                      "name": "Content",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 4,
+                                      "children": [
+                                        {
+                                          "role": "element",
+                                          "type": "INSTANCE",
+                                          "name": "Label",
+                                          "component": "Label",
+                                          "direction": "HORIZONTAL",
+                                          "gap": 4,
+                                          "children": [
+                                            {
+                                              "role": "text",
+                                              "type": "TEXT",
+                                              "name": "Text",
+                                              "text": "Доп.кнопка"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "role": "layout",
+                                          "type": "FRAME",
+                                          "name": "Counter",
+                                          "direction": "HORIZONTAL",
+                                          "gap": 10,
+                                          "children": [
+                                            {
+                                              "role": "element",
+                                              "type": "INSTANCE",
+                                              "name": "Counter 16 XS",
+                                              "component": "Counter",
+                                              "size": "16 XS",
+                                              "direction": "HORIZONTAL",
+                                              "children": [
+                                                {
+                                                  "role": "element",
+                                                  "type": "INSTANCE",
+                                                  "name": "QuantityBadge XS",
+                                                  "component": "QuantityBadge",
+                                                  "size": "XS",
+                                                  "direction": "HORIZONTAL",
+                                                  "gap": 10,
+                                                  "padding": "0px 4px 0px 4px",
+                                                  "children": [
+                                                    {
+                                                      "role": "text",
+                                                      "type": "TEXT",
+                                                      "name": "Quantity",
+                                                      "text": "9"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "role": "element",
+                          "type": "INSTANCE",
+                          "name": "L-secondary-2",
+                          "component": "L-secondary-2",
+                          "direction": "HORIZONTAL",
+                          "children": [
+                            {
+                              "role": "element",
+                              "type": "INSTANCE",
+                              "name": "Button",
+                              "component": "Button",
+                              "direction": "HORIZONTAL",
+                              "children": [
+                                {
+                                  "role": "layout",
+                                  "type": "FRAME",
+                                  "name": "Button",
+                                  "direction": "HORIZONTAL",
+                                  "padding": "10px 16px 10px 16px",
+                                  "children": [
+                                    {
+                                      "role": "layout",
+                                      "type": "FRAME",
+                                      "name": "Content",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 4,
+                                      "children": [
+                                        {
+                                          "role": "element",
+                                          "type": "INSTANCE",
+                                          "name": "Label",
+                                          "component": "Label",
+                                          "direction": "HORIZONTAL",
+                                          "gap": 4,
+                                          "children": [
+                                            {
+                                              "role": "text",
+                                              "type": "TEXT",
+                                              "name": "Text",
+                                              "text": "Доп.кнопка"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "role": "layout",
+                                          "type": "FRAME",
+                                          "name": "Counter",
+                                          "direction": "HORIZONTAL",
+                                          "gap": 10,
+                                          "children": [
+                                            {
+                                              "role": "element",
+                                              "type": "INSTANCE",
+                                              "name": "Counter 16 XS",
+                                              "component": "Counter",
+                                              "size": "16 XS",
+                                              "direction": "HORIZONTAL",
+                                              "children": [
+                                                {
+                                                  "role": "element",
+                                                  "type": "INSTANCE",
+                                                  "name": "QuantityBadge XS",
+                                                  "component": "QuantityBadge",
+                                                  "size": "XS",
+                                                  "direction": "HORIZONTAL",
+                                                  "gap": 10,
+                                                  "padding": "0px 4px 0px 4px",
+                                                  "children": [
+                                                    {
+                                                      "role": "text",
+                                                      "type": "TEXT",
+                                                      "name": "Quantity",
+                                                      "text": "9"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "role": "element",
+                          "type": "INSTANCE",
+                          "name": "L-more",
+                          "component": "L-more",
+                          "direction": "HORIZONTAL",
+                          "children": [
+                            {
+                              "role": "element",
+                              "type": "INSTANCE",
+                              "name": "Button",
+                              "component": "Button",
+                              "direction": "HORIZONTAL",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "role": "layout",
+                                  "type": "FRAME",
+                                  "name": "Button",
+                                  "direction": "HORIZONTAL",
+                                  "gap": 4,
+                                  "padding": "8px 8px 8px 8px",
+                                  "children": [
+                                    {
+                                      "role": "icon",
+                                      "type": "INSTANCE",
+                                      "name": "24 / Navigation / DotsVerticalCenteredOutline",
+                                      "icon": "DotsVerticalCenteredOutline"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "component",
+                      "type": "INSTANCE",
+                      "name": "🌕 CheckBox M 24",
+                      "component": "CheckBox",
+                      "size": "M 24",
+                      "direction": "HORIZONTAL",
+                      "slots": [
+                        {
+                          "slot": "text",
+                          "text": "(no required)"
+                        },
+                        {
+                          "slot": "label",
+                          "text": "Больше не показывать"
+                        },
+                        {
+                          "slot": "description",
+                          "text": "Description"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "role": "region",
+                  "type": "INSTANCE",
+                  "name": "↳ Right footer actions",
+                  "region": "Right footer actions",
+                  "direction": "HORIZONTAL",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "role": "element",
+                      "type": "INSTANCE",
+                      "name": "secondary-1",
+                      "component": "secondary-1",
+                      "direction": "HORIZONTAL",
+                      "children": [
+                        {
+                          "role": "element",
+                          "type": "INSTANCE",
+                          "name": "Button",
+                          "component": "Button",
+                          "direction": "HORIZONTAL",
+                          "children": [
+                            {
+                              "role": "layout",
+                              "type": "FRAME",
+                              "name": "Button",
+                              "direction": "HORIZONTAL",
+                              "padding": "10px 16px 10px 16px",
+                              "children": [
+                                {
+                                  "role": "layout",
+                                  "type": "FRAME",
+                                  "name": "Content",
+                                  "direction": "HORIZONTAL",
+                                  "gap": 4,
+                                  "children": [
+                                    {
+                                      "role": "element",
+                                      "type": "INSTANCE",
+                                      "name": "Label",
+                                      "component": "Label",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 4,
+                                      "children": [
+                                        {
+                                          "role": "text",
+                                          "type": "TEXT",
+                                          "name": "Text",
+                                          "text": "Назад"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "role": "layout",
+                                      "type": "FRAME",
+                                      "name": "Counter",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 10,
+                                      "children": [
+                                        {
+                                          "role": "element",
+                                          "type": "INSTANCE",
+                                          "name": "Counter 16 XS",
+                                          "component": "Counter",
+                                          "size": "16 XS",
+                                          "direction": "HORIZONTAL",
+                                          "children": [
+                                            {
+                                              "role": "element",
+                                              "type": "INSTANCE",
+                                              "name": "QuantityBadge XS",
+                                              "component": "QuantityBadge",
+                                              "size": "XS",
+                                              "direction": "HORIZONTAL",
+                                              "gap": 10,
+                                              "padding": "0px 4px 0px 4px",
+                                              "children": [
+                                                {
+                                                  "role": "text",
+                                                  "type": "TEXT",
+                                                  "name": "Quantity",
+                                                  "text": "9"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "element",
+                      "type": "INSTANCE",
+                      "name": "primary",
+                      "component": "primary",
+                      "direction": "HORIZONTAL",
+                      "children": [
+                        {
+                          "role": "element",
+                          "type": "INSTANCE",
+                          "name": "Button",
+                          "component": "Button",
+                          "direction": "HORIZONTAL",
+                          "children": [
+                            {
+                              "role": "layout",
+                              "type": "FRAME",
+                              "name": "Button",
+                              "direction": "HORIZONTAL",
+                              "padding": "10px 16px 10px 16px",
+                              "children": [
+                                {
+                                  "role": "layout",
+                                  "type": "FRAME",
+                                  "name": "Content",
+                                  "direction": "HORIZONTAL",
+                                  "gap": 4,
+                                  "children": [
+                                    {
+                                      "role": "element",
+                                      "type": "INSTANCE",
+                                      "name": "Label",
+                                      "component": "Label",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 4,
+                                      "children": [
+                                        {
+                                          "role": "text",
+                                          "type": "TEXT",
+                                          "name": "Text",
+                                          "text": "Далее"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "role": "layout",
+                                      "type": "FRAME",
+                                      "name": "Counter",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 10,
+                                      "children": [
+                                        {
+                                          "role": "element",
+                                          "type": "INSTANCE",
+                                          "name": "Counter 16 XS",
+                                          "component": "Counter",
+                                          "size": "16 XS",
+                                          "direction": "HORIZONTAL",
+                                          "children": [
+                                            {
+                                              "role": "element",
+                                              "type": "INSTANCE",
+                                              "name": "QuantityBadge XS",
+                                              "component": "QuantityBadge",
+                                              "size": "XS",
+                                              "direction": "HORIZONTAL",
+                                              "gap": 10,
+                                              "padding": "0px 4px 0px 4px",
+                                              "children": [
+                                                {
+                                                  "role": "text",
+                                                  "type": "TEXT",
+                                                  "name": "Quantity",
+                                                  "text": "9"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

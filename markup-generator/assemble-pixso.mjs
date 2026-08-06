@@ -1,0 +1,160 @@
+#!/usr/bin/env node
+// Шаг 4 пайплайна: сборка TSX-разметки из спеки (pixso-spec.json).
+//
+// Запуск:
+//   node assemble-pixso.mjs pixso-spec.json [GeneratedModal.tsx]
+//
+// Детерминированно. Пропсы компонентов пока берутся из текст-слотов Pixso;
+// точные имена пропсов сверяются с примерами сторибука через MCP get_examples
+// (это следующий слой). Пакеты-импорты — плейсхолдеры, поправишь под свой UI-KIT.
+
+import { readFileSync, writeFileSync } from 'node:fs';
+
+const inPath = process.argv[2] ?? 'pixso-spec.json';
+const outPath = process.argv[3] ?? 'GeneratedModal.tsx';
+
+const DF_PKG = '@ui-kit/df';
+const PLASMA_PKG = '@ui-kit/plasma';
+
+// slot -> prop. "Text" уходит в children, остальные — в атрибуты.
+const SLOT_TO_PROP = { Title: 'label', value: 'value', Placeholder: 'placeholder', Quantity: 'count' };
+const CHILDREN_SLOT = new Set(['Text']);
+
+const used = new Map(); // name -> kit ('df' | 'plasma' | 'local')
+const use = (name, kit) => used.set(name, kit);
+
+const esc = (s) => String(s).replace(/"/g, '&quot;');
+const indent = (str, pad = '  ') => str.split('\n').map((l) => (l ? pad + l : l)).join('\n');
+
+function propsFromSlots(slots) {
+  const props = [];
+  let childText = null;
+  for (const s of slots ?? []) {
+    if (CHILDREN_SLOT.has(s.slot)) { childText = s.text; continue; }
+    const p = SLOT_TO_PROP[s.slot];
+    if (p) props.push(`${p}="${esc(s.text)}"`);
+  }
+  return { props, childText };
+}
+
+const renderList = (nodes) => (nodes ?? []).map(render).filter(Boolean).join('\n');
+const frag = (inner) => `<>\n${indent(inner)}\n</>`;
+
+/** ModalDF-подобный контейнер: зоны header/footer -> пропсы, остальное -> children. */
+function partition(children) {
+  const header = [], footer = [], body = [];
+  for (const c of children ?? []) {
+    if (c.kind === 'region') {
+      const r = (c.region ?? '').toLowerCase();
+      if (r.includes('content')) {
+        const p = partition(c.children);
+        header.push(...p.header); footer.push(...p.footer); body.push(...p.body);
+        continue;
+      }
+      if (r.includes('footer')) { footer.push(...(c.children ?? [])); continue; }
+      if (r.includes('header')) { header.push(...(c.children ?? [])); continue; }
+    }
+    body.push(c);
+  }
+  return { header, footer, body };
+}
+
+function renderContainer(node) {
+  use(node.name, node.kit);
+  const { header, footer, body } = partition(node.children);
+  const attrs = [...propsFromSlots(node.slots).props];
+  if (header.length) attrs.push(`header={(\n${indent(indent(frag(renderList(header))))}\n  )}`);
+  if (footer.length) attrs.push(`footer={(\n${indent(indent(frag(renderList(footer))))}\n  )}`);
+
+  const head = attrs.length ? `<${node.name}\n${indent(attrs.join('\n'))}\n>` : `<${node.name}>`;
+  return `${head}\n${indent(renderList(body))}\n</${node.name}>`;
+}
+
+function render(node) {
+  switch (node.kind) {
+    case 'text':
+      return `{${JSON.stringify(node.text)}}`;
+
+    case 'icon':
+      use('Icon', 'local');
+      return `<Icon name="${esc(node.icon)}" />`;
+
+    case 'flow': {
+      use('Flow', 'plasma');
+      const dir = node.direction === 'VERTICAL' ? 'column' : 'row';
+      const gap = node.gap ? ` gap={${node.gap}}` : '';
+      return `<Flow direction="${dir}"${gap}>\n${indent(renderList(node.children))}\n</Flow>`;
+    }
+
+    case 'region': {
+      // вложенная зона (напр. "Header actions") — рендерим как Flow/фрагмент
+      const inner = renderList(node.children);
+      if (node.direction) {
+        use('Flow', 'plasma');
+        const dir = node.direction === 'VERTICAL' ? 'column' : 'row';
+        return `{/* ${node.region} */}\n<Flow direction="${dir}">\n${indent(inner)}\n</Flow>`;
+      }
+      return `{/* ${node.region} */}\n${inner}`;
+    }
+
+    case 'fake': {
+      use('Fake', 'local');
+      const { props, childText } = propsFromSlots(node.slots);
+      const attrs = props.length ? ' ' + props.join(' ') : '';
+      return `{/* ⚠ не найдено в UI-KIT (DF/Plasma): "${node.name}" */}\n<Fake name="${esc(node.name)}"${attrs}>${childText ? esc(childText) : ''}</Fake>`;
+    }
+
+    case 'component': {
+      use(node.name, node.kit);
+      if (node.children) return renderContainer(node);
+      const { props, childText } = propsFromSlots(node.slots);
+      const attrs = props.length ? ' ' + props.join(' ') : '';
+      if (childText != null) return `<${node.name}${attrs}>${esc(childText)}</${node.name}>`;
+      return `<${node.name}${attrs} />`;
+    }
+
+    default:
+      return '';
+  }
+}
+
+// --- рендер тела ---
+const spec = JSON.parse(readFileSync(inPath, 'utf8')).spec ?? [];
+const bodyJsx = renderList(spec);
+
+// --- импорты по китам ---
+const names = (kit) => [...used].filter(([, k]) => k === kit).map(([n]) => n).sort();
+const dfNames = names('df');
+const plasmaNames = names('plasma');
+const localNames = names('local');
+
+const imports = [`import React from 'react';`];
+if (dfNames.length) imports.push(`import { ${dfNames.join(', ')} } from '${DF_PKG}';`);
+if (plasmaNames.length) imports.push(`import { ${plasmaNames.join(', ')} } from '${PLASMA_PKG}';`);
+
+// локальные заглушки (Icon/Fake), чтобы файл был самодостаточным
+const stubs = [];
+if (localNames.includes('Icon'))
+  stubs.push(`const Icon = ({ name }: { name: string }) => <span data-icon={name} />;`);
+if (localNames.includes('Fake'))
+  stubs.push(
+    `// ⚠ заглушка для компонентов, не найденных в UI-KIT — замени вручную\n` +
+      `const Fake = ({ name, children }: { name: string; children?: React.ReactNode }) => (\n` +
+      `  <div data-fake={name} style={{ outline: '1px dashed red' }}>{children ?? name}</div>\n` +
+      `);`,
+  );
+
+const file = `${imports.join('\n')}
+${stubs.length ? '\n' + stubs.join('\n\n') + '\n' : ''}
+export const GeneratedModal = () => {
+  return (
+${indent(indent(bodyJsx))}
+  );
+};
+`;
+
+writeFileSync(outPath, file);
+console.log(`Готово: ${outPath}`);
+console.log(`  Импорт из DF (${DF_PKG}): ${dfNames.join(', ') || '—'}`);
+console.log(`  Импорт из Plasma (${PLASMA_PKG}): ${plasmaNames.join(', ') || '—'}`);
+console.log(`  Локальные заглушки: ${localNames.join(', ') || '—'}`);

@@ -1,0 +1,310 @@
+=== TOP-LEVEL KEYS ===
+[
+  'plugin',
+  'version',
+  'generatedAt',
+  'page',
+  'selectionCount',
+  'nodes'
+]
+
+roots count: 1
+root[0] keys: [
+  'id',         'name',
+  'type',       'visible',
+  'geometry',   'fills',
+  'effects',    'constraints',
+  'autoLayout', 'padding',
+  'css',        'children'
+]
+
+=== INSTANCE NAMES (все) ===
+🔷 ModalDF
+👉 Modal content
+👉 Modal header
+ButtonBack
+Button
+16 / Arrows / ChevronLeft
+modal.badge
+↳ Header actions
+🌕 IconButton 32 XS
+16 / Operation / FullscreenOn
+16 / Status / Close
+Custom block
+💎 Combobox Single 40 S
+ComboboxTrigger
+Title
+Hint
+trigger
+icon
+.Tail
+.TitleCaption
+Icon
+.Value
+24 / Animal / PawOutline
+💎 Divider
+Divider
+ 💎 TextField 40 S
+LeftIndicator
+DotBadge/Empty
+Clear
+Icon24
+Change icon here
+16 / Arrows / DisclosureDownOutline
+.Placeholder
+24 / Arrows / DisclosureDownOutline
+💎 TextField 40 S
+💎 DatePicker  S
+Calendar
+Calendar Grid
+ControlLeft
+24 / Logo / Plasma
+💎 IconButton 40 S
+24 / Arrows / DisclosureLeftOutline
+24 / Arrows / DisclosureRightOutline
+PeriodSelector
+Label 1
+Label 2
+Label
+item1
+Elements
+Event dots
+item2
+item3
+item4
+item5
+item6
+item7
+item8
+item9
+.💎 Item S
+item13
+item14
+item15
+item16
+item17
+item18
+item19
+item20
+item21
+item22
+item23
+item24
+item25
+item26
+item27
+item28
+item29
+item30
+item31
+item32
+item33
+item34
+item35
+item36
+item37
+item38
+item39
+item40
+item41
+item42
+DatePickerTrigger
+.❌ Title
+RightIndicator
+.Placeholder S
+16 / Time / CalendarOutline
+scrollbar
+👉 Modal footer
+↳ Left footer actions
+L-secondary-1
+Counter 16 XS
+QuantityBadge XS
+L-secondary-2
+L-more
+24 / Navigation / DotsVerticalCenteredOutline
+🌕 CheckBox M 24
+CheckBox
+.Check/Default/S
+label
+LeftBadge
+RightBadge
+descripption
+↳ Right footer actions
+secondary-1
+primary
+
+=== NODES: 1632  maxDepth: 18 ===
+
+=== TYPE DISTRIBUTION ===
+  INSTANCE: 458
+  FRAME: 337
+  RECTANGLE: 269
+  TEXT: 190
+  ELLIPSE: 135
+  BOOLEAN_OPERATION: 114
+  VECTOR: 107
+  LINE: 15
+  GROUP: 7
+
+=== KEYS PER TYPE ===
+  INSTANCE: id, name, type, visible, geometry, fills, effects, constraints, autoLayout, padding, css, children, layoutAlign, layoutGrow
+  FRAME: id, name, type, visible, geometry, constraints, autoLayout, padding, layoutAlign, layoutGrow, css, children, fills, effects
+  VECTOR: id, name, type, visible, geometry, fills, constraints, css
+  TEXT: id, name, type, visible, geometry, fills, constraints, css, typography, layoutAlign, layoutGrow
+  LINE: id, name, type, visible, geometry, constraints, css
+  BOOLEAN_OPERATION: id, name, type, visible, geometry, fills, css, children
+  RECTANGLE: id, name, type, visible, geometry, fills, constraints, css, layoutGrow
+  ELLIPSE: id, name, type, visible, geometry, fills, constraints, layoutAlign, layoutGrow, css
+  GROUP: id, name, type, visible, geometry, css, children
+
+=== SAMPLE: TEXT ===
+{
+  "id": "I2:22507;2:3;2:6;2:30;2:36",
+  "name": "Title.text",
+  "type": "TEXT",
+  "visible": true,
+  "geometry": {
+    "x": 0,
+    "y": 0,
+    "width": 454,
+    "height": 30
+  },
+  "fills": [
+    {
+      "type": "SOLID",
+      "color": "rgba(19, 24, 27, 0.96)",
+      "opacity": 0.96
+    }
+  ],
+  "constraints": {
+    "horizontal": "MIN",
+    "vertical": "MIN"
+  },
+  "css": {
+    "opacity": 1,
+    "backgroundColor": "rgba(19, 24, 27, 0.96)"
+  },
+  "typography": "{\"fontFamily\":\"SB Sans Display\",\"fontStyle\":\"Semibold\",\"fontWeight\":600,\"italic\":false,\"fontSize\":20,\"lineHeight\":{\"value\":30,\"unit\":\"PIXELS\",\"css\":\"30px\"},\"letterSpacing\":{\"value\":0,\"unit\":\"PIXELS\",\"css\":\"0px\"},\"textAlign\":\"left\",\"textAlignVertical\":\"center\",\"color\":\"rgba(19, 24, 27, 0.96)\",\"textCa…"
+}
+
+=== SAMPLE: INSTANCE ===
+{
+  "id": "2:22507",
+  "name": "🔷 ModalDF",
+  "type": "INSTANCE",
+  "visible": true,
+  "geometry": {
+    "x": -498,
+    "y": 3,
+    "width": 1100,
+    "height": 1000
+  },
+  "fills": [
+    {
+      "type": "SOLID",
+      "color": "rgba(255, 255, 255, 1)",
+      "opacity": 1
+    }
+  ],
+  "effects": [
+    {
+      "type": "DROP_SHADOW",
+      "offsetX": 0,
+      "offsetY": 60,
+      "radius": 112,
+      "spread": -8,
+      "color": "rgba(0, 0, 0, 0.078)"
+    }
+  ],
+  "constraints": {
+    "horizontal": "MIN",
+    "vertical": "MIN"
+  },
+  "autoLayout": {
+    "mode": "HORIZONTAL",
+    "wrap": "NO_WRAP",
+    "itemSpacing": 0,
+    "counterAxisSpacing": 10,
+    "primaryAxisAlignItems": "MIN",
+    "counterAxisAlignItems": "MIN",
+    "primaryAxisSizingMode": "FIXED",
+    "counterAxisSizingMode": "FIXED"
+  },
+  "padding": {
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0,
+    "css": "0px 0px 0px 0px"
+  },
+  "css": {
+    "opacity": 1,
+    "backgroundColor": "rgba(255, 255, 255, 1)",
+    "borderRadius": 16,
+    "boxShadow": "0px 60px 112px -8px rgba(0, 0, 0, 0.078)",
+    "padding": "0px 0px 0px 0px"
+  },
+  "children": "[1 children]"
+}
+
+=== SKELETON (без декора, depth<=6) ===
+INSTANCE: "🔷 ModalDF" [HORIZONTAL]
+  FRAME: "overlay" [HORIZONTAL]
+    INSTANCE: "👉 Modal content" [VERTICAL]
+      INSTANCE: "👉 Modal header" [HORIZONTAL]
+        INSTANCE: "👉 Modal header" [HORIZONTAL]
+          INSTANCE: "ButtonBack" [HORIZONTAL]
+            INSTANCE: "Button" [HORIZONTAL]
+          FRAME: "Text block" [VERTICAL]
+            FRAME: "Title" [HORIZONTAL]
+            TEXT: "subTitle.text"
+        INSTANCE: "↳ Header actions" [HORIZONTAL]
+          FRAME: "btn group main" [HORIZONTAL]
+            INSTANCE: "🌕 IconButton 32 XS" [HORIZONTAL]
+            INSTANCE: "🌕 IconButton 32 XS" [HORIZONTAL]
+      FRAME: "Instance" [HORIZONTAL]
+        INSTANCE: "Custom block" [VERTICAL]
+          FRAME: "row" [VERTICAL]
+            INSTANCE: "💎 Combobox Single 40 S" [VERTICAL]
+          INSTANCE: "💎 Divider"
+            INSTANCE: "Divider"
+          FRAME: "row" [HORIZONTAL]
+            INSTANCE: " 💎 TextField 40 S" [VERTICAL]
+          FRAME: "row" [HORIZONTAL]
+            INSTANCE: "💎 Combobox Single 40 S" [VERTICAL]
+            INSTANCE: " 💎 TextField 40 S" [VERTICAL]
+            INSTANCE: " 💎 TextField 40 S" [VERTICAL]
+          FRAME: "row" [HORIZONTAL]
+            INSTANCE: " 💎 TextField 40 S" [VERTICAL]
+            INSTANCE: " 💎 TextField 40 S" [VERTICAL]
+            INSTANCE: "💎 Combobox Single 40 S" [VERTICAL]
+          INSTANCE: "💎 Divider"
+            INSTANCE: "Divider"
+          FRAME: "row" [HORIZONTAL]
+            INSTANCE: "💎 Combobox Single 40 S" [VERTICAL]
+            INSTANCE: "💎 Combobox Single 40 S" [VERTICAL]
+            INSTANCE: "💎 Combobox Single 40 S" [VERTICAL]
+          INSTANCE: "💎 Divider"
+            INSTANCE: "Divider"
+          FRAME: "row" [HORIZONTAL]
+            INSTANCE: "💎 TextField 40 S" [VERTICAL]
+            INSTANCE: "💎 TextField 40 S" [VERTICAL]
+            INSTANCE: "💎 TextField 40 S" [VERTICAL]
+          FRAME: "row" [HORIZONTAL]
+            INSTANCE: "💎 DatePicker  S" [VERTICAL]
+        FRAME: "Scroll" [HORIZONTAL]
+          INSTANCE: "scrollbar" [HORIZONTAL]
+            FRAME: "Change Padding Here" [VERTICAL]
+      INSTANCE: "👉 Modal footer" [HORIZONTAL]
+        INSTANCE: "↳ Left footer actions" [HORIZONTAL]
+          FRAME: "L-actions" [HORIZONTAL]
+            INSTANCE: "L-secondary-1" [HORIZONTAL]
+            INSTANCE: "L-secondary-2" [HORIZONTAL]
+            INSTANCE: "L-more" [HORIZONTAL]
+          INSTANCE: "🌕 CheckBox M 24" [HORIZONTAL]
+            INSTANCE: "CheckBox" [HORIZONTAL]
+        INSTANCE: "↳ Right footer actions" [HORIZONTAL]
+          INSTANCE: "secondary-1" [HORIZONTAL]
+            INSTANCE: "Button" [HORIZONTAL]
+          INSTANCE: "primary" [HORIZONTAL]
+            INSTANCE: "Button" [HORIZONTAL]

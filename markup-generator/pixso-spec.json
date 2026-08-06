@@ -1,0 +1,537 @@
+{
+  "spec": [
+    {
+      "kind": "component",
+      "name": "ModalDF",
+      "kit": "df",
+      "children": [
+        {
+          "kind": "region",
+          "region": "Modal content",
+          "direction": "VERTICAL",
+          "children": [
+            {
+              "kind": "region",
+              "region": "Modal header",
+              "direction": "HORIZONTAL",
+              "children": [
+                {
+                  "kind": "region",
+                  "region": "Modal header",
+                  "direction": "HORIZONTAL",
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "Button",
+                      "kit": "plasma"
+                    },
+                    {
+                      "kind": "flow",
+                      "name": "Flow",
+                      "kit": "plasma",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "kind": "flow",
+                          "name": "Flow",
+                          "kit": "plasma",
+                          "direction": "HORIZONTAL",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "kind": "text",
+                              "text": "Создание комплекта документов № 24233423"
+                            },
+                            {
+                              "kind": "flow",
+                              "name": "Flow",
+                              "kit": "plasma",
+                              "direction": "HORIZONTAL",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "kind": "flow",
+                                  "name": "Flow",
+                                  "kit": "plasma",
+                                  "direction": "HORIZONTAL",
+                                  "gap": 10,
+                                  "children": [
+                                    {
+                                      "kind": "flow",
+                                      "name": "Flow",
+                                      "kit": "plasma",
+                                      "direction": "HORIZONTAL",
+                                      "gap": 3,
+                                      "children": [
+                                        {
+                                          "kind": "text",
+                                          "text": "Бейдж"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "text",
+                          "text": "Платёжные данные"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "region",
+                  "region": "Header actions",
+                  "direction": "HORIZONTAL",
+                  "children": [
+                    {
+                      "kind": "flow",
+                      "name": "Flow",
+                      "kit": "plasma",
+                      "direction": "HORIZONTAL",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "kind": "component",
+                          "name": "IconButton",
+                          "kit": "plasma",
+                          "size": "32 XS"
+                        },
+                        {
+                          "kind": "component",
+                          "name": "IconButton",
+                          "kit": "plasma",
+                          "size": "32 XS"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "flow",
+              "name": "Flow",
+              "kit": "plasma",
+              "direction": "HORIZONTAL",
+              "children": [
+                {
+                  "kind": "flow",
+                  "name": "Flow",
+                  "kit": "plasma",
+                  "direction": "VERTICAL",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "Combobox",
+                      "kit": "plasma",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Этап оплаты"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "Постоплата"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "component",
+                  "name": "Divider",
+                  "kit": "plasma"
+                },
+                {
+                  "kind": "flow",
+                  "name": "Flow",
+                  "kit": "plasma",
+                  "direction": "HORIZONTAL",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Получатель платежа (наименование для платёжного поручения)"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "ОАО Раменский приборостроительный завод"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "flow",
+                  "name": "Flow",
+                  "kit": "plasma",
+                  "direction": "HORIZONTAL",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "Combobox",
+                      "kit": "plasma",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Расчётный счёт"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "Выберите значение"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Банк"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "ПАО Сбербанк"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "БИК"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "044525225"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "flow",
+                  "name": "Flow",
+                  "kit": "plasma",
+                  "direction": "HORIZONTAL",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Корр.счёт"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "3010181020000000025"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Код УИН / УИП"
+                        },
+                        {
+                          "slot": "Placeholder",
+                          "text": "Введите значение"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "Combobox",
+                      "kit": "plasma",
+                      "size": "40 S"
+                    }
+                  ]
+                },
+                {
+                  "kind": "component",
+                  "name": "Divider",
+                  "kit": "plasma"
+                },
+                {
+                  "kind": "flow",
+                  "name": "Flow",
+                  "kit": "plasma",
+                  "direction": "HORIZONTAL",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "Combobox",
+                      "kit": "plasma",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "КБК"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "Выберите значение"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "Combobox",
+                      "kit": "plasma",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "ОКТМО"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "Выберите значение"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "Combobox",
+                      "kit": "plasma",
+                      "size": "40 S"
+                    }
+                  ]
+                },
+                {
+                  "kind": "component",
+                  "name": "Divider",
+                  "kit": "plasma"
+                },
+                {
+                  "kind": "flow",
+                  "name": "Flow",
+                  "kit": "plasma",
+                  "direction": "HORIZONTAL",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Сумма к оплате с НДС"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "402 800,00"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Сумма НДС"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "71 475,41"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "TextField",
+                      "kit": "df",
+                      "size": "40 S",
+                      "slots": [
+                        {
+                          "slot": "Title",
+                          "text": "Валюта платежа"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "RUB"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "flow",
+                  "name": "Flow",
+                  "kit": "plasma",
+                  "direction": "HORIZONTAL",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "DatePicker",
+                      "kit": "plasma",
+                      "size": "S",
+                      "slots": [
+                        {
+                          "slot": "Label 1",
+                          "text": "Сентябрь"
+                        },
+                        {
+                          "slot": "Label 2",
+                          "text": "2022"
+                        },
+                        {
+                          "slot": "Title",
+                          "text": "Планируемая дата платежа"
+                        },
+                        {
+                          "slot": "value",
+                          "text": "20.02.2026"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "region",
+              "region": "Modal footer",
+              "direction": "HORIZONTAL",
+              "children": [
+                {
+                  "kind": "region",
+                  "region": "Left footer actions",
+                  "direction": "HORIZONTAL",
+                  "children": [
+                    {
+                      "kind": "flow",
+                      "name": "Flow",
+                      "kit": "plasma",
+                      "direction": "HORIZONTAL",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "kind": "component",
+                          "name": "Button",
+                          "kit": "plasma",
+                          "slots": [
+                            {
+                              "slot": "Text",
+                              "text": "Доп.кнопка"
+                            },
+                            {
+                              "slot": "Quantity",
+                              "text": "9"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "component",
+                          "name": "Button",
+                          "kit": "plasma",
+                          "slots": [
+                            {
+                              "slot": "Text",
+                              "text": "Доп.кнопка"
+                            },
+                            {
+                              "slot": "Quantity",
+                              "text": "9"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "component",
+                          "name": "Button",
+                          "kit": "plasma"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "Checkbox",
+                      "kit": "plasma",
+                      "size": "M 24"
+                    }
+                  ]
+                },
+                {
+                  "kind": "region",
+                  "region": "Right footer actions",
+                  "direction": "HORIZONTAL",
+                  "children": [
+                    {
+                      "kind": "component",
+                      "name": "Button",
+                      "kit": "plasma",
+                      "slots": [
+                        {
+                          "slot": "Text",
+                          "text": "Назад"
+                        },
+                        {
+                          "slot": "Quantity",
+                          "text": "9"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "component",
+                      "name": "Button",
+                      "kit": "plasma",
+                      "slots": [
+                        {
+                          "slot": "Text",
+                          "text": "Далее"
+                        },
+                        {
+                          "slot": "Quantity",
+                          "text": "9"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
