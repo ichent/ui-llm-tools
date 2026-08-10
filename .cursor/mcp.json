@@ -6,6 +6,17 @@
       "env": {
         "FRONTDRIVE_STORYBOOK_ROOT": "/ABSOLUTE/PATH/TO/UI-KIT-REPO"
       }
+    },
+    "ui-kit-paths": {
+      "command": "node",
+      "args": [
+        "/Users/ivank/me/dev/ai-projects/frontdrive-ui-llm-tools/src/mcp/ui-kit-paths/ui-kit-paths.mjs",
+        "df=/Users/ivank/me/dev/ai-projects/frontdrive-ui-llm-tools/src/data/storybook-df.json",
+        "plasma=/Users/ivank/me/dev/ai-projects/frontdrive-ui-llm-tools/src/data/storybook-plasma.json"
+      ],
+      "env": {
+        "UIKIT_KIT_PRIORITY": "df,plasma"
+      }
     }
   }
 }

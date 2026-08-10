@@ -1,0 +1,13 @@
+---
+description: Всегда резолвить UI-KIT через MCP ui-kit-paths, не из памяти
+alwaysApply: true
+---
+
+# UI-KIT через MCP
+
+Если пользователь спрашивает про компоненты UI-KIT (DF / Plasma), пропсы, свойства, API, примеры, stories или просит собрать вёрстку по именам компонентов:
+
+1. Сначала вызвать tools MCP **ui-kit-paths** (`search_components` / `get_component` / `get_source_paths`).
+2. Исходники читать через отдельный **Bitbucket** MCP по путям из `get_source_paths`.
+3. Не отвечать пропсы и API по памяти и не читать весь `index.json` в контекст вручную.
+4. Если компонента нет в реестре — сказать об этом, не выдумывать.
